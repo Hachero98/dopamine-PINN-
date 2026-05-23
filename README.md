@@ -1,5 +1,8 @@
 # Dopamine-PINN
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20352595.svg)](https://doi.org/10.5281/zenodo.20352595)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Physics-informed neural network solver for **2D** dopamine diffusion in
 synaptic clefts, implemented in pure **JAX** (Flax NNX + Optax + jaxopt).
 This repository accompanies the manuscript:
