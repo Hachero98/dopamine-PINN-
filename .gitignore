@@ -1,0 +1,58 @@
+# ============================================================
+#  Dopamine-PINN — .gitignore for the public GitHub repo
+# ============================================================
+
+# ----- macOS / OS metadata -----
+.DS_Store
+Thumbs.db
+
+# ----- Python build / cache -----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ----- Jupyter -----
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# ----- LaTeX build artifacts -----
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.tex.bak
+
+# ----- Generated zip archives -----
+*.zip
+
+# ----- Personal / private files (must NOT be committed) -----
+cover_letter.md
+cover_letter.pdf
+*_CV_*.pdf
+Reference Papers/
+
+# ----- Manuscript source (kept off the public repo) -----
+B3_Dopamine_PINN_Paper.tex
+B3_Dopamine_PINN_Paper.pdf
+
+# ----- Intermediate experiment artifacts (kept locally, not shipped) -----
+dopamine_PINN_artifacts/
+dopamine_PINN_2D_artifacts*/
+dopamine_PINN_2D_artifacts*.zip
+
+# ----- Editor / IDE -----
+.vscode/
+.idea/
+*.swp
+*.swo
