@@ -1,0 +1,55 @@
+# =============================================================
+#  requirements.txt — Dopamine-PINN (JAX implementation)
+#  Companion code for Hackman & Zhu (2026), PLOS Comp Bio submission.
+# =============================================================
+#
+#  USAGE
+#  -----
+#  pip install -r requirements.txt
+#  python dopamine_PINN.py
+#
+#  GPU notes:
+#    On Colab T4/A100 runtimes, jax[cuda12] is preinstalled, so the
+#    line below is a no-op and JAX picks up the GPU automatically.
+#    On a local CUDA box, replace `jax` with `jax[cuda12]` to
+#    install the GPU wheel.
+#
+#  REPRODUCIBILITY
+#  ---------------
+#  These ranges are the versions verified at submission time. For an
+#  exact lockfile, run after install:
+#    pip freeze > requirements-frozen.txt
+#  and commit that alongside this file.
+# =============================================================
+
+# --- Core scientific stack ---------------------------------------------------
+numpy>=1.24,<3.0
+scipy>=1.10
+matplotlib>=3.7
+
+# --- JAX (autodiff + JIT engine) --------------------------------------------
+# 0.4.30+ has stable Flax NNX integration. On a GPU box, install
+# `jax[cuda12]` instead.
+jax>=0.4.30
+
+# --- Flax NNX (network module) ----------------------------------------------
+# NNX is the current Flax API (replacing Linen). Requires Flax >= 0.10.
+flax>=0.10
+
+# --- Optax (first-order optimization) ---------------------------------------
+optax>=0.2.3
+
+# --- jaxopt (second-order: L-BFGS) ------------------------------------------
+jaxopt>=0.8
+
+# --- Notebook execution (only needed if you run the .ipynb locally) ----------
+# Colab provides these out of the box. Uncomment for local Jupyter use.
+# jupyter>=1.0
+# ipykernel>=6.25
+
+# --- Legacy backup (the preserved DeepXDE implementation) -------------------
+# dopamine_PINN_deepxde.{py,ipynb} keep the original DeepXDE+PyTorch
+# reference run that produced the manuscript's submission-day numbers.
+# Uncomment if you want to re-run that path for cross-validation.
+# deepxde>=1.10,<2.0
+# torch>=2.0,<3.0

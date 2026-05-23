@@ -1,0 +1,53 @@
+{
+  "true_params": {
+    "D": 0.32,
+    "k": 0.05
+  },
+  "hyperparameters": {
+    "layers": [
+      2,
+      64,
+      64,
+      64,
+      64,
+      1
+    ],
+    "activation": "tanh",
+    "adam_iters": 20000,
+    "lbfgs_iters": 5000,
+    "n_domain": 10000,
+    "noise_pct": 2.0
+  },
+  "inverse": {
+    "D_recovered": 0.3127482235431671,
+    "k_recovered": 0.049052730202674866,
+    "D_rel_error_pct": 2.266180142760279,
+    "k_rel_error_pct": 1.894539594650274,
+    "n_observations": 100,
+    "noise_pct": 2.0
+  },
+  "forward": {
+    "L2_vs_analytical_pct": 1.359561589396926,
+    "L2_vs_fd_pct": 0.09031024574880418,
+    "per_snapshot": {
+      "t_1": {
+        "L2_anal_pct": 1.359561589396926,
+        "L2_fd_pct": 0.1003889209929076
+      },
+      "t_5": {
+        "L2_anal_pct": 25.055294381499273,
+        "L2_fd_pct": 0.08401684519735791
+      },
+      "t_10": {
+        "L2_anal_pct": 51.03290082659999,
+        "L2_fd_pct": 0.047003917179122535
+      },
+      "t_20": {
+        "L2_anal_pct": 95.88808672975361,
+        "L2_fd_pct": 0.10397443461122904
+      }
+    },
+    "L2_vs_analytical_at_t1_pct": 1.359561589396926,
+    "L2_vs_analytical_full_window_pct": 29.75747736111803
+  }
+}
