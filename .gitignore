@@ -46,6 +46,18 @@ Reference Papers/
 B3_Dopamine_PINN_Paper.tex
 B3_Dopamine_PINN_Paper.pdf
 
+# ----- Supporting Information (part of the unpublished manuscript) -----
+S1_Text.tex
+S1_Text.pdf
+S2_Text.tex
+S2_Text.pdf
+
+# ----- Submission bundle (private, contains manuscript) -----
+PLOS_Submission_*/
+
+# ----- Stray temp files -----
+figures/metrics_forward_backup.json
+
 # ----- Intermediate experiment artifacts (kept locally, not shipped) -----
 dopamine_PINN_artifacts/
 dopamine_PINN_2D_artifacts*/
