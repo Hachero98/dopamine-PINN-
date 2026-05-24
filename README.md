@@ -7,10 +7,9 @@ Physics-informed neural network solver for **2D** dopamine diffusion in
 synaptic clefts, implemented in pure **JAX** (Flax NNX + Optax + jaxopt).
 This repository accompanies the manuscript:
 
-> Hackman, E., & Zhu, H. (2026). *Physics-Informed Neural Networks for
-> Modeling Dopamine Neurotransmitter Diffusion in Synaptic Clefts: A
-> Computational Approach to Parkinson's Disease Dynamics.* Submitted to
-> **PLOS Computational Biology**.
+> Hackman, E., & Zhu, H. (2026). *When Inverse Physics-Informed Neural
+> Networks Become Practically Identifiable: A Case Study in Synaptic
+> Dopamine Transport.* Submitted to **PLOS Computational Biology**.
 
 The code reproduces every numeric result and figure in the paper. A
 working DeepXDE/PyTorch reference implementation is preserved as
@@ -58,7 +57,7 @@ python3 validate_metrics.py --restore   # revert
 | `figures/` | Generated PNGs + `metrics.json` + `variables.dat` from a complete reference run |
 | `figures_tiff/` | 600-DPI TIFFs used in the journal submission |
 
-The accompanying manuscript ("Physics-Informed Neural Networks for Modeling Dopamine Neurotransmitter Diffusion in Synaptic Clefts: A Computational Approach to Parkinson's Disease Dynamics", Hackman & Zhu, 2026) is under review at *PLOS Computational Biology*. The version of record will be made available via the journal's open-access platform upon acceptance.
+The accompanying manuscript ("When Inverse Physics-Informed Neural Networks Become Practically Identifiable: A Case Study in Synaptic Dopamine Transport", Hackman & Zhu, 2026) is under review at *PLOS Computational Biology*. The version of record will be made available via the journal's open-access platform upon acceptance.
 
 ---
 
@@ -163,9 +162,9 @@ If you use this code, please cite the manuscript:
 ```bibtex
 @article{Hackman2026Dopamine,
   author    = {Hackman, Emmanuel and Zhu, Huiqing},
-  title     = {Physics-Informed Neural Networks for Modeling Dopamine
-               Neurotransmitter Diffusion in Synaptic Clefts: A
-               Computational Approach to {Parkinson's} Disease Dynamics},
+  title     = {When Inverse Physics-Informed Neural Networks Become
+               Practically Identifiable: A Case Study in Synaptic
+               Dopamine Transport},
   journal   = {PLOS Computational Biology},
   year      = {2026},
   note      = {Submitted}
