@@ -3,13 +3,17 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20352595.svg)](https://doi.org/10.5281/zenodo.20352595)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+Archived release: `v1.0-submission` — Medical & Biological Engineering &
+Computing (MBEC) submission snapshot ([Zenodo record](https://doi.org/10.5281/zenodo.20352595)).
+
 Physics-informed neural network solver for **2D** dopamine diffusion in
 synaptic clefts, implemented in pure **JAX** (Flax NNX + Optax + jaxopt).
 This repository accompanies the manuscript:
 
 > Hackman, E., & Zhu, H. (2026). *When Inverse Physics-Informed Neural
 > Networks Become Practically Identifiable: A Case Study in Synaptic
-> Dopamine Transport.* Submitted to **PLOS Computational Biology**.
+> Dopamine Transport.* Submitted to **Medical & Biological Engineering &
+> Computing** (Springer, IFMBE).
 
 The code reproduces every numeric result and figure in the paper. A
 working DeepXDE/PyTorch reference implementation is preserved as
@@ -57,7 +61,7 @@ python3 validate_metrics.py --restore   # revert
 | `figures/` | Generated PNGs + `metrics.json` + `variables.dat` from a complete reference run |
 | `figures_tiff/` | 600-DPI TIFFs used in the journal submission |
 
-The accompanying manuscript ("When Inverse Physics-Informed Neural Networks Become Practically Identifiable: A Case Study in Synaptic Dopamine Transport", Hackman & Zhu, 2026) is under review at *PLOS Computational Biology*. The version of record will be made available via the journal's open-access platform upon acceptance.
+The accompanying manuscript ("When Inverse Physics-Informed Neural Networks Become Practically Identifiable: A Case Study in Synaptic Dopamine Transport", Hackman & Zhu, 2026) is under review at *Medical & Biological Engineering & Computing* (Springer, IFMBE). The version of record will be made available via the journal's platform upon acceptance.
 
 ---
 
@@ -165,7 +169,7 @@ If you use this code, please cite the manuscript:
   title     = {When Inverse Physics-Informed Neural Networks Become
                Practically Identifiable: A Case Study in Synaptic
                Dopamine Transport},
-  journal   = {PLOS Computational Biology},
+  journal   = {Medical \& Biological Engineering \& Computing},
   year      = {2026},
   note      = {Submitted}
 }
@@ -224,10 +228,10 @@ Disclosure section of the manuscript for the full statement).
 
 - [x] Add `LICENSE` (MIT)
 - [x] Add `requirements.txt` with version constraints
-- [ ] Push to GitHub at `github.com/<username>/dopamine-PINN`
-- [ ] Link GitHub repo to Zenodo and mint a DOI
-- [ ] Replace placeholder DOI in `B3_Dopamine_PINN_Paper.tex` Data
+- [x] Push to GitHub at `github.com/Hachero98/dopamine-PINN-`
+- [x] Link GitHub repo to Zenodo and mint a DOI
+- [x] Replace placeholder DOI in the manuscript's Data
       Availability section
-- [ ] Tag a v1.0 release matching the manuscript submission
+- [x] Tag a `v1.0-submission` release matching the MBEC manuscript submission
 - [ ] After first install on the submission machine, run
       `pip freeze > requirements-frozen.txt` to lock exact versions
