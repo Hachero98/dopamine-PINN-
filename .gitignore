@@ -63,6 +63,12 @@ dopamine_PINN_artifacts/
 dopamine_PINN_2D_artifacts*/
 dopamine_PINN_2D_artifacts*.zip
 
+# ----- Sibling-project working trees (have their own repos) -----
+# The B4 FDA Nozzle/Pump PINN paper lives at:
+#   https://github.com/Hachero98/fda-nozzle-pump-pinn
+# Files exist on disk for convenience but are not tracked by this repo.
+B4_FDA_Nozzle_PINN_Paper/
+
 # ----- Editor / IDE -----
 .vscode/
 .idea/
