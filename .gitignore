@@ -45,6 +45,9 @@ Reference Papers/
 # ----- Manuscript source (kept off the public repo) -----
 B3_Dopamine_PINN_Paper.tex
 B3_Dopamine_PINN_Paper.pdf
+refs.bib
+SUBMISSION_CHECKLIST.md
+MBEC_SUBMISSION_CHECKLIST.md
 
 # ----- Supporting Information (part of the unpublished manuscript) -----
 S1_Text.tex

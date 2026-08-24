@@ -57,7 +57,6 @@ python3 validate_metrics.py --restore   # revert
 | `dopamine_PINN.ipynb` | Colab notebook with the full experimental pipeline |
 | `dopamine_PINN_deepxde.{py,ipynb}` | Preserved DeepXDE/PyTorch reference implementation (cross-validation) |
 | `validate_metrics.py` | Helper for substituting numerical results into LaTeX manuscript placeholders |
-| `refs.bib` | Vancouver-style bibliography for the accompanying manuscript |
 | `figures/` | Generated PNGs + `metrics.json` + `variables.dat` from a complete reference run |
 | `figures_tiff/` | 600-DPI TIFFs used in the journal submission |
 
