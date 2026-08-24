@@ -1,0 +1,124 @@
+% =============================================================
+%  ONLINE RESOURCE 2 — Analytical Solution Derivation
+%  Supporting Information for Hackman & Zhu (2026)
+%  "When Inverse Physics-Informed Neural Networks Become
+%   Practically Identifiable: A Case Study in Synaptic Dopamine
+%   Transport" — Medical & Biological Engineering & Computing
+%   submission
+% =============================================================
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black,
+            urlcolor=blue, pdfborder={0 0 0}}
+\usepackage{setspace}
+\usepackage{lineno}
+\linenumbers
+\doublespacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7em}
+
+\title{Online Resource 2: Analytical Solution Derivation \\
+\large Supporting Information for ``When Inverse
+Physics-Informed Neural Networks Become Practically
+Identifiable: A Case Study in Synaptic Dopamine Transport''}
+
+\author{Emmanuel Hackman \and Huiqing Zhu \\
+School of Mathematics and Natural Sciences, \\
+University of Southern Mississippi, Hattiesburg, MS, USA \\
+Corresponding author: \texttt{Emmanuel.Hackman@usm.edu}}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+We derive the closed-form solution of the initial-boundary
+value problem of equations~(1)--(4) of the main text on the
+unconfined planar domain $(x, y) \in \mathbb{R}^2$. This
+expression serves as the ground-truth reference for the
+forward-problem $L^2$ error reported in Table~2 of the main
+text.
+
+The two-dimensional reaction-diffusion equation
+\begin{equation}
+  \frac{\partial C}{\partial t}
+  \;=\; D\, \nabla^2 C \;-\; k\, C,
+  \quad \nabla^2 = \partial_{xx} + \partial_{yy},
+  \label{eq:S2_pde}
+\end{equation}
+reduces to a pure diffusion equation under the substitution
+\begin{equation}
+  C(x, y, t) \;=\; u(x, y, t)\, e^{-k t},
+  \label{eq:S2_sub}
+\end{equation}
+which yields $\partial_t u = D\, \nabla^2 u$ for $u(x, y, t)$
+and inherits the same radially symmetric initial profile
+$u(x, y, 0) = C_0\, \exp\!\big(-(x^2 + y^2) / (2\sigma^2)\big)$.
+
+The fundamental solution of the diffusion equation on
+$\mathbb{R}^2$ is the two-dimensional heat kernel
+\begin{equation}
+  G(x, y, t) \;=\;
+  \frac{1}{4\pi D t}\,
+  \exp\!\left( -\frac{x^2 + y^2}{4 D t} \right),
+  \label{eq:S2_kernel}
+\end{equation}
+and the solution with Gaussian initial data follows by
+two-dimensional convolution,
+\begin{equation}
+  u(x, y, t) \;=\;
+  \iint_{\mathbb{R}^2}
+    G(x - x',\, y - y',\, t)\, u(x', y', 0)\, \mathrm{d}x'\,
+    \mathrm{d}y'.
+  \label{eq:S2_conv}
+\end{equation}
+Because both the heat kernel and the radially symmetric
+Gaussian initial condition separate as products of independent
+$x$ and $y$ factors, the integral evaluates to the product of
+two one-dimensional Gaussians,
+\begin{equation}
+  u(x, y, t) \;=\;
+  \frac{C_0\, \sigma^2}{\sigma^2 + 2 D t}\,
+  \exp\!\left( -\frac{x^2 + y^2}{2(\sigma^2 + 2 D t)} \right),
+  \label{eq:S2_diffusion}
+\end{equation}
+which describes a radially symmetric Gaussian whose variance
+grows linearly in time as
+$\sigma_t^2 = \sigma^2 + 2 D t$ in each Cartesian direction,
+while the integrated mass
+$\iint u\, \mathrm{d}x\, \mathrm{d}y = 2\pi\, C_0\, \sigma^2$
+is conserved. Re-applying the substitution~\eqref{eq:S2_sub}
+gives the full analytical solution
+\begin{equation}
+  \boxed{\;
+  C(x, y, t) \;=\;
+  \frac{C_0\, \sigma^2}{\sigma^2 + 2 D t}\,
+  \exp\!\left( -\frac{x^2 + y^2}{2(\sigma^2 + 2 D t)} \right)
+  \, e^{-k t}.
+  \;}
+  \label{eq:S2_full}
+\end{equation}
+
+Equation~\eqref{eq:S2_full} is exact on the unconfined domain
+$\mathbb{R}^2$. It satisfies the Neumann boundary conditions
+$\nabla C \cdot \hat{n} = 0$ on $\partial \Omega$ in the limit
+$L \to \infty$, and approximately when $\sigma_t \ll L/2$.
+For the parameter values used in this work
+($L = 5\,\mu\text{m}$, $\sigma = 0.5\,\mu\text{m}$,
+$D = 0.32\,\mu\text{m}^2/\text{ms}$), this condition holds over
+the early portion of the simulation window; equation~\eqref{eq:S2_full}
+therefore provides a reliable ground-truth reference in that
+regime, while finite-domain corrections via the method of images
+or a two-dimensional Fourier-cosine expansion become non-negligible
+at later times. The finite-difference reference solver of
+Section~3 of the main text serves as the complementary baseline
+that captures the boundary-driven deviations from~\eqref{eq:S2_full}
+at large $t$.
+
+\end{document}

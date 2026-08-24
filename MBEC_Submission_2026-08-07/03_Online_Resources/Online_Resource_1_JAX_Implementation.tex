@@ -1,0 +1,212 @@
+% =============================================================
+%  ONLINE RESOURCE 1 — JAX Implementation Details
+%  Supporting Information for Hackman & Zhu (2026)
+%  "When Inverse Physics-Informed Neural Networks Become
+%   Practically Identifiable: A Case Study in Synaptic Dopamine
+%   Transport" — Medical & Biological Engineering & Computing
+%   submission
+% =============================================================
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black,
+            urlcolor=blue, pdfborder={0 0 0}}
+\usepackage{setspace}
+\usepackage{lineno}
+\usepackage{listings}
+\linenumbers
+\doublespacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7em}
+
+\title{Online Resource 1: JAX Implementation Details \\
+\large Supporting Information for ``When Inverse
+Physics-Informed Neural Networks Become Practically
+Identifiable: A Case Study in Synaptic Dopamine Transport''}
+
+\author{Emmanuel Hackman \and Huiqing Zhu \\
+School of Mathematics and Natural Sciences, \\
+University of Southern Mississippi, Hattiesburg, MS, USA \\
+Corresponding author: \texttt{Emmanuel.Hackman@usm.edu}}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+We summarize the key JAX code blocks used to construct and train
+the PINN models reported in the main text. The full reproducible
+implementation, including plotting helpers, the analytical-solution
+validation, and the explicit two-dimensional finite-difference
+reference solver, is publicly available in the GitHub repository
+cited in the Code Availability statement of the main text
+(\url{https://github.com/Hachero98/dopamine-PINN-}). The
+implementation uses Flax NNX for the network module, Optax for
+the first-order Adam phase, and jaxopt for the second-order L-BFGS
+phase. All collocation-point arrays are JAX-native
+(\texttt{jnp.ndarray}) and the training step is JIT-compiled via
+\texttt{nnx.jit}.
+
+\section*{S1.1 Network, residual, and collocation sampling}
+
+The MLP takes $(x, y, t) \in \mathbb{R}^3$ and returns a scalar
+concentration. Spatial and temporal derivatives needed for the
+PDE residual are obtained by composing \texttt{jax.grad} on the
+network output; \texttt{jax.vmap} batches the per-point residual
+across all $N_r$ collocation points without an explicit Python
+loop.
+
+\begin{verbatim}
+import jax, jax.numpy as jnp
+import numpy as np
+from flax import nnx
+import optax
+from jaxopt import LBFGS
+
+jax.config.update("jax_enable_x64", True)
+
+D_TRUE, K_TRUE = 0.32, 0.05    # diffusion (mu m^2/ms), reuptake (1/ms)
+L, T           = 5.0, 20.0     # side length (mu m), simulation (ms)
+SIGMA, C0      = 0.5, 1.0      # release width (mu m), peak (mu M)
+
+class MLP(nnx.Module):
+    def __init__(self, layers, *, rngs):
+        # Each Linear layer is its own named attribute (lin_0, lin_1, ...)
+        # so Flax NNX treats them as named submodules without nnx.List.
+        self.n_layers = len(layers) - 1
+        for i in range(self.n_layers):
+            setattr(self, f"lin_{i}",
+                nnx.Linear(layers[i], layers[i + 1],
+                           kernel_init=nnx.initializers.glorot_normal(),
+                           rngs=rngs))
+    def __call__(self, xyt):
+        h = xyt
+        for i in range(self.n_layers - 1):
+            h = jnp.tanh(getattr(self, f"lin_{i}")(h))
+        return getattr(self, f"lin_{self.n_layers - 1}")(h)
+
+def C_at(model, x, y, t):
+    return model(jnp.stack([x, y, t]))[0]
+
+# PDE residual at one point: dC/dt - D Laplacian(C) + k C
+def residual_one(model, x, y, t, D, k):
+    dC_dt   = jax.grad(C_at, argnums=3)(model, x, y, t)
+    d2C_dx2 = jax.grad(lambda u: jax.grad(C_at, argnums=1)
+                                  (model, u, y, t))(x)
+    d2C_dy2 = jax.grad(lambda v: jax.grad(C_at, argnums=2)
+                                  (model, x, v, t))(y)
+    return dC_dt - D * (d2C_dx2 + d2C_dy2) + k * C_at(model, x, y, t)
+\end{verbatim}
+
+\section*{S1.2 Forward problem}
+
+The forward PINN treats $D$ and $k$ as known constants and learns
+the concentration field $\hat{C}(x, y, t; \theta)$ that satisfies
+the PDE residual together with the IC and Neumann BC losses. The
+Adam phase runs in Optax; the L-BFGS phase runs through jaxopt on
+the same NNX parameter pytree, exposed via \texttt{nnx.split} and
+reassembled via \texttt{nnx.merge}.
+
+\begin{verbatim}
+rngs      = nnx.Rngs(1234)
+model     = MLP([3, 64, 64, 64, 64, 1], rngs=rngs)
+optimizer = nnx.Optimizer(model, optax.adam(1e-3), wrt=nnx.Param)
+
+def forward_loss(model, pts):
+    res = jax.vmap(residual_one,
+                   in_axes=(None, 0, 0, 0, None, None))(
+        model, pts["x_r"], pts["y_r"], pts["t_r"], D_TRUE, K_TRUE)
+    L_r = jnp.mean(res ** 2)
+    # IC and BC losses computed analogously (omitted for brevity)
+    return 10.0 * L_r + L_ic + L_bc
+
+@nnx.jit
+def adam_step(model, optimizer, pts):
+    loss, grads = nnx.value_and_grad(forward_loss)(model, pts)
+    optimizer.update(model, grads)
+    return loss
+
+for it in range(20_000):
+    adam_step(model, optimizer, pts)
+
+# L-BFGS phase: NNX state becomes the parameter pytree for jaxopt
+gdef, state = nnx.split(model)
+def lbfgs_loss(params):
+    return forward_loss(nnx.merge(gdef, params), pts)
+result = LBFGS(fun=lbfgs_loss, maxiter=5_000, tol=1e-9).run(state)
+model  = nnx.merge(gdef, result.params)
+\end{verbatim}
+
+\section*{S1.3 Inverse problem}
+
+In JAX, the diffusion coefficient and the reuptake rate are
+exposed as \texttt{nnx.Param} attributes of an
+\texttt{InverseMLP} module, so they live in the same parameter
+pytree as the network weights and are optimized jointly without
+a dedicated ``external trainable variables'' interface.
+Log-parametrization keeps $D$ and $k$ strictly positive.
+
+\begin{verbatim}
+class InverseMLP(nnx.Module):
+    def __init__(self, layers, D0, k0, *, rngs):
+        self.mlp   = MLP(layers, rngs=rngs)
+        self.D_log = nnx.Param(jnp.asarray(np.log(D0)))
+        self.k_log = nnx.Param(jnp.asarray(np.log(k0)))
+    def __call__(self, xyt):
+        return self.mlp(xyt)
+    @property
+    def D(self): return jnp.exp(self.D_log.value)
+    @property
+    def k(self): return jnp.exp(self.k_log.value)
+
+def inverse_loss(model, pts, obs):
+    D, k = model.D, model.k
+    res = jax.vmap(residual_one,
+                   in_axes=(None, 0, 0, 0, None, None))(
+        model.mlp, pts["x_r"], pts["y_r"], pts["t_r"], D, k)
+    L_r = jnp.mean(res ** 2)
+    C_pred = jax.vmap(C_at, in_axes=(None, 0, 0, 0))(
+        model.mlp, obs["x_d"], obs["y_d"], obs["t_d"])
+    L_d = jnp.mean((C_pred - obs["C_d"]) ** 2)
+    # IC and BC losses computed analogously (omitted for brevity)
+    return 10.0 * L_r + L_ic + L_bc + L_d
+
+# (obs_x, obs_y, obs_t, obs_C) drawn from FD reference at 2% noise.
+# Deliberately offset initial guesses D_0 = 0.30, k_0 = 0.04.
+model     = InverseMLP([3, 64, 64, 64, 64, 1],
+                       D0=0.30, k0=0.04, rngs=nnx.Rngs(1234))
+optimizer = nnx.Optimizer(model, optax.adam(1e-3), wrt=nnx.Param)
+
+@nnx.jit
+def step(model, optimizer, pts, obs):
+    loss, grads = nnx.value_and_grad(inverse_loss)(model, pts, obs)
+    optimizer.update(model, grads)
+    return loss
+
+history = []
+for it in range(20_000):
+    step(model, optimizer, pts, obs)
+    if it % 500 == 0:
+        history.append((it, float(model.D), float(model.k)))
+
+# L-BFGS phase identical in shape to the forward problem
+gdef, state = nnx.split(model)
+def lbfgs_loss_inv(params):
+    return inverse_loss(nnx.merge(gdef, params), pts, obs)
+result = LBFGS(fun=lbfgs_loss_inv, maxiter=5_000, tol=1e-9).run(state)
+model  = nnx.merge(gdef, result.params)
+\end{verbatim}
+
+After training, the physical parameters are recovered by reading
+\texttt{model.D} and \texttt{model.k}, which apply
+\texttt{jnp.exp} to the underlying log-parameterized variables.
+The trajectory of $(D, k)$ logged every $500$ Adam iterations
+is persisted to \texttt{variables.dat} for post-hoc visualization
+(Fig 4 of the main text).
+
+\end{document}
