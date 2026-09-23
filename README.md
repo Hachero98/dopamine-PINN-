@@ -73,17 +73,16 @@ $$\frac{\partial C}{\partial t} \;=\; D\,\nabla^2 C \;-\; k\, C, \qquad (x, y) \
 
 with a radial Gaussian release pulse as the initial condition and
 zero-flux (Neumann) boundary conditions on all four edges. Parameter
-values used (Cragg & Rice 2004; Nicholson & Phillips 1981; Wiencke et al.
-2020):
+values used:
 
-| Symbol | Value | Meaning |
-|---|---|---|
-| $D$ | 0.32 µm²/ms | Effective diffusion coefficient |
-| $k$ | 0.05 1/ms | Linearised DAT reuptake rate |
-| $L$ | 5.0 µm | Domain side length (volume-transmission scale) |
-| $T$ | 20 ms | Post-release simulation window |
-| $\sigma$ | 0.5 µm | Release pulse half-width |
-| $C_0$ | 1.0 µM | Peak release concentration |
+| Symbol | Value | Meaning | Source |
+|---|---|---|---|
+| $D$ | 0.32 µm²/ms | Effective diffusion coefficient, $D_{\text{free}}/\lambda^2 = 0.763/1.54^2$ | Cragg & Rice 2004; Nicholson & Phillips 1981 ($D^* = D/\lambda^2$) |
+| $k$ | 0.020 1/ms | Linearised DAT reuptake rate, $V_{\max}/K_m = 4.1/0.21 \approx 20$ s⁻¹ | Cragg & Rice 2004 |
+| $L$ | 5.0 µm | Domain side length; neighbouring synapse at $r = 5$ µm | Cragg & Rice 2004 (Fig. 2) |
+| $T$ | 20 ms | Post-release simulation window | Modelling choice |
+| $\sigma$ | 0.5 µm | Release pulse half-width | Modelling choice |
+| $C_0$ | 1.0 µM | Peak concentration scale (PDE is linear in $C$) | Normalisation |
 
 ---
 
@@ -104,8 +103,8 @@ Reports `L2(PINN vs. analytical)` and `L2(PINN vs. FD)` as percentages.
 ### Inverse problem
 $D$ and $k$ are exposed as `nnx.Param` attributes of an `InverseMLP`
 module (log-parametrized to enforce positivity), with deliberately
-offset initial guesses ($D_0 = 0.30$, $k_0 = 0.04$ vs. truth
-$0.32$, $0.05$). The PINN sees 400 noisy synthetic observations
+offset initial guesses ($D_0 = 0.30$, $k_0 = 0.016$ vs. truth
+$0.32$, $0.020$). The PINN sees 400 noisy synthetic observations
 ($\sigma = 2\%$ of peak concentration) sampled uniformly from the
 $(x, y, t)$ space-time domain. Reports recovered $\hat{D}, \hat{k}$
 and their relative errors.
