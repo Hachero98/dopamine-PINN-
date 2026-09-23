@@ -27,14 +27,12 @@ numpy>=1.24,<3.0
 scipy>=1.10
 matplotlib>=3.7
 
-# --- JAX (autodiff + JIT engine) --------------------------------------------
-# 0.4.30+ has stable Flax NNX integration. On a GPU box, install
-# `jax[cuda12]` instead.
-jax>=0.4.30
-
-# --- Flax NNX (network module) ----------------------------------------------
-# NNX is the current Flax API (replacing Linen). Requires Flax >= 0.10.
-flax>=0.10
+# --- JAX + Flax NNX (pinned together) ---------------------------------------
+# Pinned as a verified-compatible pair: the newest flax (0.12.9) imports
+# jax.experimental.hijax.HiPrimitive, which the newest jax (0.11.2) removed.
+# On a GPU box, install `jax[cuda12]==0.10.2` instead.
+jax==0.10.2
+flax==0.12.5
 
 # --- Optax (first-order optimization) ---------------------------------------
 optax>=0.2.3
