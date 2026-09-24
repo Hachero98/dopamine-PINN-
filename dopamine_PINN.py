@@ -79,7 +79,8 @@ K_TRUE = 0.020    # 1 / ms          linearised reuptake rate,
                   #                 Vmax / Km = 4.1 / 0.21 ~ 20 1/s (Cragg & Rice 2004)
 L      = 5.0      # mu_m            domain side length, [-L/2, L/2]^2; neighbouring
                   #                 synapse at r = 5 mu_m (Cragg & Rice 2004, Fig 2)
-T      = 20.0     # ms              simulation time (modelling choice)
+T      = 50.0     # ms              simulation window ~ 1/k = one DAT uptake time
+                  #                 constant at k' = 20 1/s (Cragg & Rice 2004)
 SIGMA  = 0.5      # mu_m            Gaussian release pulse width (modelling choice)
 C0     = 1.0      # mu_M            peak concentration scale (normalisation;
                   #                 the PDE is linear in C)
@@ -121,7 +122,7 @@ def C_analytical(x, y, t, D=D_TRUE, k=K_TRUE, sigma=SIGMA, C0=C0):
 # =============================================================
 def fd_reference_2d(D=D_TRUE, k=K_TRUE, L=L, T=T, sigma=SIGMA, C0=C0,
                     nx=101, ny=101, nt=None,
-                    snapshot_times=(1.0, 5.0, 10.0, 20.0)):
+                    snapshot_times=(1.0, 5.0, 10.0, 20.0, 50.0)):
     """Explicit 2D FD solver.
 
     Returns (x, y, t_snapshots, snapshots) where snapshots is a dict
@@ -197,7 +198,9 @@ class MLP(nnx.Module):
                                rngs=rngs))
 
     def __call__(self, xyt):
-        h = xyt
+        # Rescale (x, y, t) to [-1, 1]^3 so tanh units are not saturated by
+        # raw t values up to T; jax.grad includes this scaling automatically.
+        h = (xyt - jnp.array([0.0, 0.0, T / 2])) / jnp.array([L / 2, L / 2, T / 2])
         for i in range(self.n_layers - 1):
             h = jnp.tanh(getattr(self, f"lin_{i}")(h))
         return getattr(self, f"lin_{self.n_layers - 1}")(h)
@@ -421,12 +424,12 @@ def train_forward():
 # 8. Forward evaluation
 # =============================================================
 def evaluate_forward(model):
-    nx, ny, nt = 101, 101, 21
+    nx, ny, nt = 101, 101, int(T) + 1   # 1 ms time spacing
     xs = np.linspace(-L / 2, L / 2, nx)
     ys = np.linspace(-L / 2, L / 2, ny)
     ts = np.linspace(0.0, T, nt)
 
-    snapshot_times = [1.0, 5.0, 10.0, 20.0]
+    snapshot_times = [1.0, 5.0, 10.0, 20.0, 50.0]
     # FD reference (xy meshgrid: shape [ny, nx])
     x_fd, y_fd, _, fd_snaps = fd_reference_2d(snapshot_times=snapshot_times)
 
@@ -507,7 +510,7 @@ def make_noisy_observations(n_obs=N_OBS, noise_pct=2.0, rng=None):
     # between adjacent snapshots, which is sufficient given the slow time
     # variation relative to FD time step.
     x_fd, y_fd, t_fd, fd_snaps = fd_reference_2d(
-        snapshot_times=tuple(np.linspace(0.5, T / 2.0, 11)),
+        snapshot_times=tuple(np.linspace(0.5, 0.9 * T, 90)),
     )
     snap_ts = sorted(fd_snaps.keys())
     snap_vol = np.stack([fd_snaps[t] for t in snap_ts], axis=0)  # [n_t, ny, nx]
@@ -517,7 +520,7 @@ def make_noisy_observations(n_obs=N_OBS, noise_pct=2.0, rng=None):
     )
     obs_x = rng.uniform(-L / 2, L / 2, n_obs)
     obs_y = rng.uniform(-L / 2, L / 2, n_obs)
-    obs_t = rng.uniform(0.5, T / 2.0, n_obs)
+    obs_t = rng.uniform(0.5, 0.9 * T, n_obs)
     C_clean = interp(np.stack([obs_t, obs_y, obs_x], axis=1))
     noise = rng.normal(0.0, (noise_pct / 100.0) * C0, n_obs)
     return obs_x, obs_y, obs_t, C_clean + noise

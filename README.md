@@ -80,7 +80,7 @@ values used:
 | $D$ | 0.32 µm²/ms | Effective diffusion coefficient, $D_{\text{free}}/\lambda^2 = 0.763/1.54^2$ | Cragg & Rice 2004; Nicholson & Phillips 1981 ($D^* = D/\lambda^2$) |
 | $k$ | 0.020 1/ms | Linearised DAT reuptake rate, $V_{\max}/K_m = 4.1/0.21 \approx 20$ s⁻¹ | Cragg & Rice 2004 |
 | $L$ | 5.0 µm | Domain side length; neighbouring synapse at $r = 5$ µm | Cragg & Rice 2004 (Fig. 2) |
-| $T$ | 20 ms | Post-release simulation window | Modelling choice |
+| $T$ | 50 ms | Post-release simulation window, ≈ $1/k$ (one uptake time constant) | Modelling choice, set from $k$ (Cragg & Rice 2004) |
 | $\sigma$ | 0.5 µm | Release pulse half-width | Modelling choice |
 | $C_0$ | 1.0 µM | Peak concentration scale (PDE is linear in $C$) | Normalisation |
 
@@ -122,7 +122,7 @@ After running `dopamine_PINN.py` (or the notebook), the outputs land in
 | `forward_heatmap.png` | Space-time concentration field with pointwise error |
 | `inverse_convergence.png` | $D$ and $k$ trajectories during inverse training |
 | `noise_sweep.png` | Recovery vs observational noise level (5 levels) |
-| `posterior.png` / `posterior_hmc.png` | Bayesian UQ via Laplace and HMC |
+| `posterior.png` | Laplace posterior over $(D, k)$ with the bounded-domain FD likelihood, plus the FD reference estimate |
 | `param_grid.png` | Recovery across the biological D-k range |
 | `obs_density_scaling.png` | Recovery vs number of observations |
 | `metrics.json` | All numerical results (forward L2, inverse D/k, multi-seed, noise sweep, etc.) |
