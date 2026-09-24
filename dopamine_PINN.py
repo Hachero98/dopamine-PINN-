@@ -198,9 +198,7 @@ class MLP(nnx.Module):
                                rngs=rngs))
 
     def __call__(self, xyt):
-        # Rescale (x, y, t) to [-1, 1]^3 so tanh units are not saturated by
-        # raw t values up to T; jax.grad includes this scaling automatically.
-        h = (xyt - jnp.array([0.0, 0.0, T / 2])) / jnp.array([L / 2, L / 2, T / 2])
+        h = xyt
         for i in range(self.n_layers - 1):
             h = jnp.tanh(getattr(self, f"lin_{i}")(h))
         return getattr(self, f"lin_{self.n_layers - 1}")(h)
