@@ -1,0 +1,1605 @@
+{
+ "linear_s1234": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 1234,
+  "n": 400,
+  "file": "linear_s1234.npz",
+  "sha256": "330fcdfac59d23e30ef182cbca675bfaf29884dd9a7b52dd54ba72a708ce1c74",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s2001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 2001,
+  "n": 400,
+  "file": "linear_s2001.npz",
+  "sha256": "36969a65b91e871963e2a78dbf246da230825852989684614a5ed5dca2bed51f",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s2002": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 2002,
+  "n": 400,
+  "file": "linear_s2002.npz",
+  "sha256": "85276e1f0827cdc385bb08fec9aff00ecc53ff3872163d254fba8f49d6d54e05",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s2003": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 2003,
+  "n": 400,
+  "file": "linear_s2003.npz",
+  "sha256": "6e894ce7bf3bfe3c9e68fe0c7eeac33b07998d59874d0dc346b8e34ddbd4af1b",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s3001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 3001,
+  "n": 400,
+  "file": "linear_s3001.npz",
+  "sha256": "d68e599c04775d3e7877d8ff7a0946f06ab6ffe3c554d65a0b29d37be1d0133b",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 400,
+  "file": "linear_s4001.npz",
+  "sha256": "1662122487728b448bb21ec10249bcffce9e304e86a2d25727b1b88fac922ea9",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s4002": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4002,
+  "n": 400,
+  "file": "linear_s4002.npz",
+  "sha256": "14fde2431e65cf88066dfde97e5ba8df12adb232304ba8974a3b33e819cbe7c0",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s4003": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4003,
+  "n": 400,
+  "file": "linear_s4003.npz",
+  "sha256": "a096a65899dfef47b70ee8ba724919532ecf9844cb8148f7e339faa27215a1d8",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7001,
+  "n": 400,
+  "file": "linear_s7001.npz",
+  "sha256": "1eab7ed64eb53672c46131711c7d01632a476b43d4130b470c9e0d70de77a2e9",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7002": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7002,
+  "n": 400,
+  "file": "linear_s7002.npz",
+  "sha256": "e24718443de17685d1e7061920bb51d5e0cf0a67c33fb3a11a9c0cd88f48382f",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7003": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7003,
+  "n": 400,
+  "file": "linear_s7003.npz",
+  "sha256": "18a744cf12cd6a8d64dce33b4560dd3e85e368b6343643ea875c00e011288895",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7004": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7004,
+  "n": 400,
+  "file": "linear_s7004.npz",
+  "sha256": "5b4a0aebea76ebc39056d4a600dce92cc17af6f75a293b04bb1451b188022cff",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7005": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7005,
+  "n": 400,
+  "file": "linear_s7005.npz",
+  "sha256": "f9f8f21b666e8b0605efe64a3084fb1c6d0dd1ee6219a94d86ac1366062d0f22",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7006": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7006,
+  "n": 400,
+  "file": "linear_s7006.npz",
+  "sha256": "f5c673cae5c8f606d565384e3ce52aa7c7b2f428dbdc4c8647e42dfe4111a648",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7007": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7007,
+  "n": 400,
+  "file": "linear_s7007.npz",
+  "sha256": "555558dfa41c9773ae613ce43c007c19a9cb37115b1b9a2ba61946b4e3977c12",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7008": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7008,
+  "n": 400,
+  "file": "linear_s7008.npz",
+  "sha256": "59625885c94c91bad377d684ca879fb4a4a0864ae5c34b3d1f360152117d035e",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7009": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7009,
+  "n": 400,
+  "file": "linear_s7009.npz",
+  "sha256": "094c813e0a85d19943ad6bf752dd2db58742cf0781afa38ece874b5758eca5bd",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7010": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7010,
+  "n": 400,
+  "file": "linear_s7010.npz",
+  "sha256": "ed119a97b098bda96e510be55cb7648717d5a591df0e4022ec6e440a4aad7f75",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7011": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7011,
+  "n": 400,
+  "file": "linear_s7011.npz",
+  "sha256": "6668e707045badc2820f32fc3017146b9c5c2dc881dab694fad6a513b692b8b0",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7012": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7012,
+  "n": 400,
+  "file": "linear_s7012.npz",
+  "sha256": "60a85d2c952a523d65f1fc4cfd8e60e977da05a313b65f810073943e06890404",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7013": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7013,
+  "n": 400,
+  "file": "linear_s7013.npz",
+  "sha256": "603262dfa9c625cb345e15d31596753cd7f608fc451317c08f524afa24ac3985",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7014": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7014,
+  "n": 400,
+  "file": "linear_s7014.npz",
+  "sha256": "64442117acdb39b1bdb7af5bbd0b200aebb50bbe506d8a66b68b022904bd9892",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7015": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7015,
+  "n": 400,
+  "file": "linear_s7015.npz",
+  "sha256": "fc1ae4b67668eddda1f86f22319d4eec785408c0e91686a224ddfd4f4012b08c",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7016": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7016,
+  "n": 400,
+  "file": "linear_s7016.npz",
+  "sha256": "31c2e69a25a7b8b023d8b81d966de9e19df9aa45378aa8db663cbddd2fd2c4bd",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7017": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7017,
+  "n": 400,
+  "file": "linear_s7017.npz",
+  "sha256": "3a627b5cbdf4ae0745303d57712df0d68acfdba65532d4188582eb986307d45e",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7018": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7018,
+  "n": 400,
+  "file": "linear_s7018.npz",
+  "sha256": "02ba9a1db4f44d740e670ea57ee31f2419abbe19ec77b20dcc59f6936773a7b4",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7019": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7019,
+  "n": 400,
+  "file": "linear_s7019.npz",
+  "sha256": "dc88ee8e9b04238641c1ab5854e94ae1ef92958f1bd0f16055aa11cff82e223e",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s7020": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 7020,
+  "n": 400,
+  "file": "linear_s7020.npz",
+  "sha256": "30045d752718253e785a8b2e491cdee3732a763a2ab68a2ad538d9b6dd3715bc",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s8001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 8001,
+  "n": 400,
+  "file": "linear_s8001.npz",
+  "sha256": "17ca8c2af2ddaca218dc1e351be063fc232bfa29e30416c19ca33df38acbbf12",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_s8002": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 8002,
+  "n": 400,
+  "file": "linear_s8002.npz",
+  "sha256": "7c51aaf281dffc546c0c227269e46a768b22b4f47370ebf164efb10ddf500164",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_noise0_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.0,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "note": "same locations and standardized noise at every level",
+  "n": 400,
+  "file": "linear_noise0_s4001.npz",
+  "sha256": "fd88f5011e16540dd717d784198ac4e7254f13c6fe2811429b2c87a10dcab4e1",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_noise1_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.01,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "note": "same locations and standardized noise at every level",
+  "n": 400,
+  "file": "linear_noise1_s4001.npz",
+  "sha256": "dcdff9202c5fdeffb84bf2a29933f0b4afcbf8d429c6ea1ec9f9b8e2e492b586",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_noise2_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "note": "same locations and standardized noise at every level",
+  "n": 400,
+  "file": "linear_noise2_s4001.npz",
+  "sha256": "1662122487728b448bb21ec10249bcffce9e304e86a2d25727b1b88fac922ea9",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_noise5_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.05,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "note": "same locations and standardized noise at every level",
+  "n": 400,
+  "file": "linear_noise5_s4001.npz",
+  "sha256": "d4281572854d735c8a1700c33ce9903d1c272b60ef6f21ba8547c79911701d7d",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_noise10_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.1,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "note": "same locations and standardized noise at every level",
+  "n": 400,
+  "file": "linear_noise10_s4001.npz",
+  "sha256": "f468fdcde68bb614ee0295ae1cec989cb69254101109a693826c2514c4efff98",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_grid_D0.16_k0.01_s4001": {
+  "model": "linear",
+  "D": 0.16,
+  "k": 0.01,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 400,
+  "file": "linear_grid_D0.16_k0.01_s4001.npz",
+  "sha256": "8f5e3f7cc54e13015ac1643ebb1db6b0cf223514f8efb2b7c714fe72788f5ed4",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_grid_D0.16_k0.04_s4001": {
+  "model": "linear",
+  "D": 0.16,
+  "k": 0.04,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 400,
+  "file": "linear_grid_D0.16_k0.04_s4001.npz",
+  "sha256": "c9b88bd74dd59d3373698cfc974c2c4438bb69ef59338285e1eff934f4414646",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_grid_D0.32_k0.02_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 400,
+  "file": "linear_grid_D0.32_k0.02_s4001.npz",
+  "sha256": "1662122487728b448bb21ec10249bcffce9e304e86a2d25727b1b88fac922ea9",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_grid_D0.5_k0.01_s4001": {
+  "model": "linear",
+  "D": 0.5,
+  "k": 0.01,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 400,
+  "file": "linear_grid_D0.5_k0.01_s4001.npz",
+  "sha256": "e17dea2dc64bc3e29dddd65d13af61ba81e2288756c5555365e97c85c87052e2",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_grid_D0.5_k0.04_s4001": {
+  "model": "linear",
+  "D": 0.5,
+  "k": 0.04,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 400,
+  "file": "linear_grid_D0.5_k0.04_s4001.npz",
+  "sha256": "d87fe8fbfec925ec1a61ca3e1d921566fd6e83306740dd365afbf7964805afe9",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_n100_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 100,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 100,
+  "file": "linear_n100_s4001.npz",
+  "sha256": "cb871eeb55271cd64801d26f2e2ba4ae39754af0dec852666c98cb083a42e607",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_n200_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 200,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 200,
+  "file": "linear_n200_s4001.npz",
+  "sha256": "4ff54fca9f1206dacc5e6c672e0524df5a4d0a38a0eec70a9402dcd8baf96662",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_n400_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 400,
+  "file": "linear_n400_s4001.npz",
+  "sha256": "1662122487728b448bb21ec10249bcffce9e304e86a2d25727b1b88fac922ea9",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_n800_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 800,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 800,
+  "file": "linear_n800_s4001.npz",
+  "sha256": "3f31e6debb421954b77f2c1946c7d74c8f00289d72e67b56165f22e8979ad27f",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "linear_n1600_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "scattered",
+  "n_obs": 1600,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 1600,
+  "file": "linear_n1600_s4001.npz",
+  "sha256": "f65e4aaa66ab6de6595f6a154458384f9f26c2fe254fb770f52da82996883026",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "electrode_S1_r1.0_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "electrode",
+  "sites": [
+   [
+    1.0,
+    0.0
+   ]
+  ],
+  "dt": 0.5,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 90,
+  "file": "electrode_S1_r1.0_s4001.npz",
+  "sha256": "f57375b79845e2629a432fdbaf573a6ac1b902606a439450f623e3384a6b6d49",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "electrode_S1_r2.0_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "electrode",
+  "sites": [
+   [
+    2.0,
+    0.0
+   ]
+  ],
+  "dt": 0.5,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 90,
+  "file": "electrode_S1_r2.0_s4001.npz",
+  "sha256": "462ef793a8fd7fcc5f0963d6edfb0f88e48f3be8f8559328fc821e9aa9fcc632",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "electrode_S1_r2.5_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "electrode",
+  "sites": [
+   [
+    2.5,
+    0.0
+   ]
+  ],
+  "dt": 0.5,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 90,
+  "file": "electrode_S1_r2.5_s4001.npz",
+  "sha256": "2566360ef1b58c1ca63299be77e1d5223ad7a86f9369449fcc9681324a53301b",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "electrode_S3_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "electrode",
+  "sites": [
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.0,
+    2.0
+   ],
+   [
+    -1.7677669529663687,
+    -1.7677669529663687
+   ]
+  ],
+  "dt": 0.5,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 270,
+  "file": "electrode_S3_s4001.npz",
+  "sha256": "132e5acb808fec82756e8319e7330f69f143afb99151c5763336bc5cd1959284",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "electrode_S1_r1.0_coarse_s4001": {
+  "model": "linear",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "design": "electrode",
+  "sites": [
+   [
+    1.0,
+    0.0
+   ]
+  ],
+  "dt": 5.0,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 4001,
+  "n": 9,
+  "file": "electrode_S1_r1.0_coarse_s4001.npz",
+  "sha256": "06fa0ec5e6f54d33ef3dce95a04c12f360218bcbcf1c5a7d0b0ab2834466e243",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "mm_T50_C1_s9001": {
+  "model": "michaelis-menten",
+  "D": 0.32,
+  "Vmax": 0.0041,
+  "Km": 0.21,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 9001,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "n": 400,
+  "file": "mm_T50_C1_s9001.npz",
+  "sha256": "5d8e3cafc6f07c4553f34e848febd4d849f611a3c7968abd1db53a3957261986",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "mm_T500_C10_s9001": {
+  "model": "michaelis-menten",
+  "D": 0.32,
+  "Vmax": 0.0041,
+  "Km": 0.21,
+  "C0": 10.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "design": "scattered",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   450.0
+  ],
+  "seed": 9001,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.5,
+   "T_end": 500.0,
+   "D_cap": 0.64
+  },
+  "n": 400,
+  "file": "mm_T500_C10_s9001.npz",
+  "sha256": "9e1408f4dc2e44ab3306cdb063f543361794087e03c78c498ea9a0d7da10c877",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "dfield_s9101": {
+  "model": "linear, D(x, y)",
+  "D": 0.32,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "solver": {
+   "nx": 81,
+   "dx": 0.0625,
+   "dt": 0.0014492753623188406,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 0.64
+  },
+  "D_field": {
+   "A": 0.5,
+   "xc": 0.8,
+   "yc": 0.4,
+   "w": 0.6
+  },
+  "design": "600 scattered in 0.2-10 ms + 400 in 0.5-45 ms",
+  "noise_sd": 0.02,
+  "seed": [
+   9101,
+   9102
+  ],
+  "n": 1000,
+  "file": "dfield_s9101.npz",
+  "sha256": "be1a555bdd78b2e239ad4246d65e7e080ac071c49534da8287ca4604286cb705",
+  "generator": "dopamine_pinn 1.0.0"
+ },
+ "obstacles_s9201": {
+  "model": "linear, obstacles",
+  "D_free": 0.763,
+  "k": 0.02,
+  "C0": 1.0,
+  "sigma": 0.5,
+  "L": 5.0,
+  "obstacles": [
+   [
+    1.5,
+    0.2,
+    0.55
+   ],
+   [
+    -1.4,
+    0.9,
+    0.5
+   ],
+   [
+    0.3,
+    1.6,
+    0.5
+   ],
+   [
+    -0.6,
+    -1.6,
+    0.55
+   ],
+   [
+    1.2,
+    -1.5,
+    0.45
+   ],
+   [
+    -1.7,
+    -0.6,
+    0.45
+   ],
+   [
+    1.8,
+    1.7,
+    0.4
+   ],
+   [
+    -1.8,
+    1.9,
+    0.35
+   ]
+  ],
+  "design": "extracellular grid nodes",
+  "n_obs": 400,
+  "noise_sd": 0.02,
+  "t_window": [
+   0.5,
+   45.0
+  ],
+  "seed": 9201,
+  "solver": {
+   "nx": 161,
+   "dx": 0.03125,
+   "dt": 0.0001855287569573284,
+   "dt_store": 0.1,
+   "T_end": 50.0,
+   "D_cap": 1.25
+  },
+  "n": 400,
+  "file": "obstacles_s9201.npz",
+  "sha256": "86d1e5374f31f88c4fd921535c09d0a02d4417bc1c4457f38a4df87178a7324b",
+  "generator": "dopamine_pinn 1.0.0"
+ }
+}
