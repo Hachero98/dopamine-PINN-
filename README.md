@@ -29,6 +29,7 @@ different parameters; do not use it to reproduce the current manuscript.)
 | `dopamine_PINN_tuning.ipynb` | Record of the loss-weight selection (Online Resource 3) and the electrode designs |
 | `dopamine_PINN_extensions.ipynb` | Extension experiments: 20 realizations, truth-free weights, Michaelis-Menten, D(x, y), obstacles |
 | `dopamine_PINN_remedies.ipynb` | Adaptive weights, adaptive sampling and Fourier features on the cases where the PINN failed |
+| `results/` | **Outputs of the runs behind the manuscript** (`metrics.json`, figures, JSON of the extension experiments) |
 | `design_map/` | Cramér-Rao experimental-design map for electrode-like recordings |
 | `legacy/` | Superseded files, kept for the record (see `legacy/README.md`) |
 
@@ -80,10 +81,26 @@ L-BFGS, 30,000 collocation points).
 
 ### Reproducing the manuscript
 
-Open `dopamine_PINN_baseline.ipynb` in Colab, choose an A100 runtime and run all cells
-(the first cell installs the pinned JAX stack and this repository). Each experiment has a
-toggle; results are saved to Google Drive after every run and resumed on a rerun. The
-notebook writes `paper_numbers.json` with every number reported in the manuscript.
+The numbers in the submitted manuscript were produced by the notebooks below (Google
+Colab, NVIDIA A100); their outputs are in `results/`.
+
+| Manuscript item | Notebook | Output in `results/` |
+|---|---|---|
+| Forward accuracy (Table 2, Figs 2-3) | `dopamine_PINN.ipynb` | `manuscript_main_run/` |
+| Inverse recovery on realization 4001 (Table 3, upper rows), posterior (Fig 6), noise sweep (Fig 5), LM baseline (Table 4) | `dopamine_PINN.ipynb` | `manuscript_main_run/metrics.json` |
+| Parameter grid, observation density, ablation, trajectories (Online Resource 4) | `dopamine_PINN.ipynb` | `manuscript_main_run/` |
+| 20 independent realizations (Table 3, lower rows; Fig 4; Section 3.3) | `dopamine_PINN_extensions.ipynb` (E1) | `manuscript_extensions/E1_noise_draws.*` |
+| Data weight without the ground truth (Section 3.4) | `dopamine_PINN_extensions.ipynb` (E2) | `manuscript_extensions/E2_truthfree_wd.*` |
+| Loss-weight selection record (Online Resource 3) | `dopamine_PINN_tuning.ipynb` | — |
+
+Open a notebook in Colab, choose an A100 runtime and run all cells. GPU runs are not
+bit-reproducible, so a rerun agrees within the run-to-run spread (about 1-2 percentage
+points in the error of $D$ for a single run).
+
+**Consolidated route.** `dopamine_PINN_baseline.ipynb` regenerates the same experiments
+through the `dopamine_pinn` package from the frozen benchmark data (the first cell
+installs the pinned JAX stack and this repository), measures the run-to-run spread and
+writes `paper_numbers.json`. It is the route to use for new work.
 
 ---
 
