@@ -92,6 +92,7 @@ Colab, NVIDIA A100); their outputs are in `results/`.
 | 20 independent realizations (Table 3, lower rows; Fig 4; Section 3.3) | `dopamine_PINN_extensions.ipynb` (E1) | `manuscript_extensions/E1_noise_draws.*` |
 | Data weight without the ground truth (Section 3.4) | `dopamine_PINN_extensions.ipynb` (E2) | `manuscript_extensions/E2_truthfree_wd.*` |
 | Loss-weight selection record (Online Resource 3) | `dopamine_PINN_tuning.ipynb` | — |
+| FD reference vs the exact bounded-domain solution (Online Resource 2, Table S2.1; Section 3.1) | `scripts/exact_solution_check.py` (NumPy only, about a minute) | `exact_solution_check.json` |
 
 Open a notebook in Colab, choose an A100 runtime and run all cells. GPU runs are not
 bit-reproducible, so a rerun agrees within the run-to-run spread (about 1-2 percentage

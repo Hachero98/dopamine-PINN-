@@ -1,0 +1,41 @@
+{
+ "parameters": {
+  "D": 0.32,
+  "k": 0.02,
+  "L": 5.0,
+  "sigma": 0.5,
+  "C0": 1.0,
+  "images_per_direction": 10
+ },
+ "max_initial_image_contribution_over_C0": 3.726653172078671e-06,
+ "snapshots": {
+  "0.5": {
+   "fd_vs_exact_pct": 0.05679103737653491,
+   "whole_plane_vs_exact_pct": 0.32182711348355947
+  },
+  "1": {
+   "fd_vs_exact_pct": 0.04808125485811677,
+   "whole_plane_vs_exact_pct": 2.218090504638348
+  },
+  "5": {
+   "fd_vs_exact_pct": 0.010144299514860065,
+   "whole_plane_vs_exact_pct": 35.2904181817015
+  },
+  "10": {
+   "fd_vs_exact_pct": 0.0016109961303711808,
+   "whole_plane_vs_exact_pct": 56.54861216226222
+  },
+  "20": {
+   "fd_vs_exact_pct": 0.0012779388094459644,
+   "whole_plane_vs_exact_pct": 74.13140087827483
+  },
+  "50": {
+   "fd_vs_exact_pct": 0.0030176317346306248,
+   "whole_plane_vs_exact_pct": 88.46234013590976
+  }
+ },
+ "space_time_grid": {
+  "fd_vs_exact_pct": 0.01545585404843442,
+  "whole_plane_vs_exact_pct": 53.784793849957275
+ }
+}
