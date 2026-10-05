@@ -78,3 +78,8 @@ B4_FDA_Nozzle_PINN_Paper/
 .idea/
 *.swp
 *.swo
+
+# ----- local experiment outputs -----
+baseline_out/
+extensions_out/
+remedies_out/

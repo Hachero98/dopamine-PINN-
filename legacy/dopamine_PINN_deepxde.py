@@ -77,7 +77,7 @@ FIG_DIR.mkdir(exist_ok=True)
 #    Nicholson & Phillips 1981; Wiencke et al. 2020)
 # =============================================================
 D_TRUE = 0.32     # µm² / ms      diffusion coefficient
-K_TRUE = 0.05     # 1 / ms         linearised reuptake rate
+K_TRUE = 0.020    # 1 / ms         linearised reuptake rate (Vmax/Km, Cragg & Rice 2004)
 L      = 5.0      # µm             total domain length (volume-transmission scale)
 T      = 20.0     # ms             simulation time
 SIGMA  = 0.5      # µm             Gaussian release pulse width
@@ -255,10 +255,10 @@ def build_inverse_pinn(obs_x, obs_t, obs_C, noise_std):
     #    D = -0.0006 and k = 0.175):
     #   1. Log-parametrization: D = exp(D_log), k = exp(k_log) >> strictly > 0
     #   2. Initial guesses closer to truth: D_0 = 0.30 (vs true 0.32),
-    #      k_0 = 0.04 (vs true 0.05)
+    #      k_0 = 0.016 (vs true 0.020)
     #   3. (in train_inverse) residual loss weighted 10x via loss_weights
     D_log = dde.Variable(float(np.log(0.30)))   # exp -> 0.30
-    k_log = dde.Variable(float(np.log(0.04)))   # exp -> 0.04
+    k_log = dde.Variable(float(np.log(0.016)))  # exp -> 0.016
 
     def pde(X, C):
         D = torch.exp(D_log)        # > 0 by construction
@@ -655,9 +655,9 @@ def main():
             "noise_pct":       args.noise_pct,
         }
         plot_inverse_convergence(FIG_DIR / "inverse_convergence.png")
-        print(f"\n  Recovered D = {D_rec:.4f} µm²/ms (true 0.32)   "
+        print(f"\n  Recovered D = {D_rec:.4f} µm²/ms (true {D_TRUE})   "
               f"|err| = {rel_D:.2f}%   [→ \\DATA{{[Z%]}}]")
-        print(f"  Recovered k = {k_rec:.4f} 1/ms     (true 0.05)   "
+        print(f"  Recovered k = {k_rec:.4f} 1/ms     (true {K_TRUE})   "
               f"|err| = {rel_k:.2f}%   [→ \\DATA{{[W%]}}]")
 
     # Write metrics for direct paste into the manuscript
