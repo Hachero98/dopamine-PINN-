@@ -8,6 +8,8 @@
    as both the truth and the fitted model. Seeds 4001-4005 reproduce the noise
    of the original finite-difference runs exactly.
 3. Cramer-Rao bound of each electrode design, as a check of Table 2.
+4. The same bounds when the release amount C0 is also unknown (log C0 as a third
+   parameter; the model is linear in C0).
 
 NumPy/SciPy only, about a minute on a laptop.
 Usage:  python scripts/review_analyses.py <electrode_design.json> <out.json>
@@ -111,13 +113,17 @@ def block_matrix(rho_tau, drift, times, n_sites=len(MEAS_SITES)):
     return M
 
 
-def crb_pct(f, M=None, h=1e-5):
-    """Relative CRB (%) of D and k for noise-free output f(logD, logk)."""
+def crb_pct(f, M=None, h=1e-5, with_c0=False):
+    """Relative CRB (%) of D and k (and C0 if with_c0) for noise-free output f(logD, logk).
+    With with_c0 the output is scaled by C0 = exp(logC0), so dC/dlogC0 = C."""
     th = np.log([D_TRUE, K_TRUE])
-    J = np.empty((f(*th).size, 2))
+    f0 = f(*th)
+    J = np.empty((f0.size, 3 if with_c0 else 2))
     for j in range(2):
         e = np.zeros(2); e[j] = h
         J[:, j] = (f(*(th + e)) - f(*(th - e))) / (2 * h)
+    if with_c0:
+        J[:, 2] = f0
     if M is not None:
         J = M @ J
     F = J.T @ J / SIG_N**2
@@ -136,6 +142,8 @@ def sensor_bounds():
             M = block_matrix(sc['rho_tau'], sc['drift'], times)
             f = lambda lD, lk: apply_op(np.exp(lD), np.exp(lk), op)
             out[name + ('' if pre else '_no_baseline')] = crb_pct(f, M)
+            if pre:
+                out[name + '_unknown_C0'] = crb_pct(f, M, with_c0=True)
     return out
 
 
@@ -170,6 +178,7 @@ def electrode_designs(el, seeds):
         out[des['name']] = {
             'sites': des['sites'], 'dt': des['dt'], 'n_obs': int(ts.size), 'n_draws': len(seeds),
             'crb_pct': crb_pct(f_bound),
+            'crb_unknown_C0_pct': crb_pct(f_bound, with_c0=True),
             'rmse_D': float(np.sqrt(np.mean(Dv**2))), 'rmse_k': float(np.sqrt(np.mean(kv**2))),
             'median_D': float(np.median(Dv)), 'median_k': float(np.median(kv)),
             'covered_D': int(sum(f['covers_D'] for f in fits.values())),
@@ -192,6 +201,9 @@ if __name__ == '__main__':
     print('sensor CRB (D, k) %:')
     for n, v in res['sensor_crb_pct'].items():
         print(f'  {n:<24} {v[0]:6.1f} {v[1]:6.1f}')
+    print('electrode designs, bound with unknown C0 (D, k, C0) %:')
+    for n, d in res['electrode'].items():
+        print(f"  {n:<13} " + ' '.join(f'{v:6.1f}' for v in d['crb_unknown_C0_pct']))
     print('electrode designs, 50 realizations:')
     for n, d in res['electrode'].items():
         print(f"  {n:<13} CRB {d['crb_pct'][0]:5.1f} {d['crb_pct'][1]:5.1f} | RMSE {d['rmse_D']:5.1f} "
