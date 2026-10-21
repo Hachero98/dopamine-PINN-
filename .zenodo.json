@@ -1,0 +1,26 @@
+{
+  "title": "Code and data for: Measurement-aware physics-informed neural networks for estimating dopamine diffusion and uptake from sparse electrode recordings",
+  "upload_type": "software",
+  "description": "<p>JAX implementation of measurement-aware inverse physics-informed neural networks (PINNs) for estimating the dopamine diffusion coefficient and uptake rate from sparse, noisy electrode recordings, together with a classical least-squares reference estimator, Cram&eacute;r-Rao bounds of recording designs, the frozen synthetic benchmark data and the outputs of every run reported in the accompanying manuscript (Hackman and Zhu, submitted to Biomedical Signal Processing and Control). The README maps each table and figure to the notebook or script that produces it.</p>",
+  "creators": [
+    {
+      "name": "Hackman, Emmanuel",
+      "affiliation": "School of Mathematics and Natural Sciences, University of Southern Mississippi"
+    },
+    {
+      "name": "Zhu, Huiqing",
+      "affiliation": "School of Mathematics and Natural Sciences, University of Southern Mississippi"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "physics-informed neural networks",
+    "inverse problems",
+    "dopamine",
+    "amperometry",
+    "Cramér-Rao bound",
+    "measurement model",
+    "JAX"
+  ],
+  "access_right": "open"
+}
