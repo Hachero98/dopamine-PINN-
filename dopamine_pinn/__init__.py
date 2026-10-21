@@ -13,6 +13,8 @@ reference     reference estimator with Laplace posterior; Levenberg-Marquardt ba
 pinn          network, PDE residuals, collocation, trainer (optional adaptive weights / RAD)
 experiments   runners for the paper's experiments
 benchmark     frozen benchmark datasets (generate / load)
+causal        do(A = a) on the linear model: dose-aware PINN curriculum (paper 2)
+counterfactual  exact dose model, counterfactual Cramer-Rao bound, reference over realizations (paper 2)
 """
 __version__ = '1.0.0'
 

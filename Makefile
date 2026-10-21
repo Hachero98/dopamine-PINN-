@@ -1,7 +1,7 @@
 # Dopamine-PINN: common tasks
 PYTHON ?= python3
 
-.PHONY: install test benchmark check-benchmark causal causal-quick
+.PHONY: install test benchmark check-benchmark causal causal-quick counterfactual-a1
 
 install:            ## install the package (editable) with test dependencies
 	$(PYTHON) -m pip install -e ".[test]"
@@ -20,3 +20,6 @@ causal-quick:       ## causal study do(A=a) on the linear model, tiny schedule (
 
 causal:             ## causal study do(A=a) on the linear model, paper settings (GPU advised)
 	$(PYTHON) scripts/run_causal_linear.py
+
+counterfactual-a1:  ## paper 2 A1/T2: reference over 50 realizations vs counterfactual CRB (CPU, ~10 s)
+	$(PYTHON) scripts/counterfactual_A1.py
