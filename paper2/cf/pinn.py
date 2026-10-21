@@ -83,7 +83,7 @@ def build_loss(mech, net, pin=None):
 
 def collocation(profile, design, seed):
     return sample_points(n_domain=profile.n_domain, n_initial=profile.n_initial, n_boundary=profile.n_boundary,
-                         seed=seed, T_end=design.T, amp=design.C0)
+                         seed=seed, T_end=design.T, amp=design.C0, t_power=profile.t_power)
 
 
 def batch(pts, obs, dose_mode, seed):

@@ -27,7 +27,7 @@ python3.11 paper2/run.py --model linear --profile fast --seeds 4001-4005
 python3.11 paper2/run.py --model mm_capacity --profile fast --seeds 4001-4005
 python3.11 paper2/run.py --model linear --profile fast --w-res 30000 --tag wres3e4 --seeds 4009 4010
 python3.11 paper2/run.py --model linear --profile fast --summary              # table + figure only
-python3.11 -m pytest -q paper2/tests                                          # about 6 minutes on CPU
+python3.11 -m pytest -q paper2/tests                                          # about 1-2 minutes on CPU
 ```
 
 On Colab: open `paper2/colab.ipynb` from the `causal-linear` branch, set MODEL, PROFILE and
@@ -70,5 +70,7 @@ log scale (comparable with the Laplace SD and the bound).
 2. The PINN-to-reference RMSE ratio, with its interval, on 5–10 realizations.
 3. The diagnostics: PINN data misfit should not fall below the reference's, and the
    residual should be small against the uptake term. Paper-1 weights fail this for the
-   dose-aware network (`causal-linear` Colab runs, Oct 2026); compare `--w-res` values
-   with `fast` first.
+   dose-aware network (`causal-linear` Colab runs, Oct 2026); compare settings with
+   `fast` first. Raising `--w-res` 10x alone made it worse (Oct 2026: D, k, eta errors
+   ~35-50 %), because the network then ignores the initial pulse; `--w-init` and
+   `--t-power` (more collocation in the first milliseconds) target that.

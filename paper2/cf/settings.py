@@ -54,6 +54,7 @@ class Profile:
     w_init: float = cfg.W_INVERSE[1]
     w_bound: float = cfg.W_INVERSE[2]
     w_data: float = cfg.W_INVERSE[3]
+    t_power: float = 1.0     # > 1 puts more interior points at early times (t = T u^p)
     lr: float = cfg.LR
     n_chunk: int = 50
     eval_dt: float = 1.0     # ms between evaluation frames (effects)

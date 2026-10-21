@@ -40,6 +40,8 @@ def main():
     ap.add_argument('--net-seed', type=int, default=1234)
     ap.add_argument('--w-res', type=float, help='residual weight (default: the profile\'s)')
     ap.add_argument('--w-data', type=float, help='data weight (default: the profile\'s)')
+    ap.add_argument('--w-init', type=float, help='initial-condition weight (default: the profile\'s)')
+    ap.add_argument('--t-power', type=float, help='early-time collocation: t = T u^p (default 1, uniform)')
     ap.add_argument('--tag', default='', help='suffix for the profile folder, e.g. wres3e4')
     ap.add_argument('--out', default='paper2/runs')
     ap.add_argument('--summary', action='store_true', help='only summarise finished studies')
@@ -47,10 +49,11 @@ def main():
     args = ap.parse_args()
 
     prof = cf.PROFILES[args.profile]
-    changes = {k: v for k, v in (('w_res', args.w_res), ('w_data', args.w_data)) if v is not None}
+    changes = {k: v for k, v in (('w_res', args.w_res), ('w_data', args.w_data), ('w_init', args.w_init),
+                                                  ('t_power', args.t_power)) if v is not None}
     if changes or args.tag:
         prof = prof.replace(name=f'{prof.name}_{args.tag}' if args.tag else prof.name, **changes)
-        assert args.tag or not changes, 'give --tag when changing weights, so results do not mix'
+        assert args.tag or not changes, 'give --tag when changing a setting, so results do not mix'
 
     if not args.summary:
         for s in seeds(args.seeds):
