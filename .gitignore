@@ -84,3 +84,6 @@ baseline_out/
 extensions_out/
 remedies_out/
 causal_out/
+
+# paper 2 workbench outputs (large; kept on Drive)
+paper2/runs/
