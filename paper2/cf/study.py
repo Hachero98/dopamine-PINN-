@@ -105,7 +105,13 @@ def run_study(mech_name, profile='fast', obs_seed=4001, net_seed=cfg.SEED, desig
     mech = mechanisms.get(mech_name, **(mech_kw or {}))
     d = study_dir(out, mech_name, prof.name, obs_seed, net_seed)
     if (d / 'results.json').exists() and not force:
-        return json.loads((d / 'results.json').read_text())
+        res = json.loads((d / 'results.json').read_text())
+        now = json.loads(json.dumps(prof.to_dict()))
+        diff = {k: (v, now.get(k)) for k, v in res['profile'].items() if now.get(k, v) != v}
+        if diff:
+            raise ValueError(f'{d} holds a study with other settings (saved, now): {diff}. '
+                             'Use a different TAG, or force=True to overwrite.')
+        return res
     t0 = time.time()
     say = print if verbose else (lambda *a, **k: None)
     say(f'== {mech_name} | {prof.name} | obs {obs_seed} | net {net_seed}')
