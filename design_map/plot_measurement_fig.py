@@ -91,8 +91,8 @@ with plt.rc_context(RC):
         if has_p:
             r5 = [ref5_med(n, key) for n in names]
             ax.plot(xi + 0.38, r5, 'x', color=C_AWARE, mew=1.0, ms=4.5, zorder=4)
-            ax.plot([], [], 'd', mfc='white', mec='0.3', mew=1.0, ms=4.5, label='PINN (5 realizations)')
-            ax.plot([], [], 'x', color=C_AWARE, mew=1.0, ms=4.5, label='reference, aware, same 5')
+            ax.plot([], [], 'd', mfc='white', mec='0.3', mew=1.0, ms=4.5, label='PINN (5; all combined: 20)')
+            ax.plot([], [], 'x', color=C_AWARE, mew=1.0, ms=4.5, label='reference, aware, same records')
         ax.set_yscale('symlog', linthresh=5.0, linscale=1.0)
         ticks = [-100, -50, -20, -10, -5, 0, 5, 10, 20, 50, 100, 200]
         pv_all = [v for n in names for mode in ('aware', 'naive')

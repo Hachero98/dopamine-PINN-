@@ -78,8 +78,8 @@ with plt.rc_context(RC):
             ax.plot(xi - 0.2, [R50[n][f'rmse_{p}'] for n in names], '^', color='k', ms=5,
                     label='reference, 50 realizations')
         ax.plot(xi, ref, '^', color='k', mfc='white', mew=0.8, ms=5,
-                label='reference, same 5 as PINN' if R50 is not None else 'reference estimator (RMSE)')
-        ax.plot(xi + 0.2, pin, 'o', color=col, mec='k', mew=0.4, ms=5, label='PINN, 5 realizations')
+                label='reference, same records as PINN' if R50 is not None else 'reference estimator (RMSE)')
+        ax.plot(xi + 0.2, pin, 'o', color=col, mec='k', mew=0.4, ms=5, label='PINN, 5 (two sites: 20) realizations')
         ax.set_yscale('log')
         ax.set_xticks(xi); ax.set_xticklabels([labels[n] for n in names], fontsize=6.5)
         ax.set_ylabel(f'error in ${p}$ (%)'); ax.grid(axis='y', which='major', **GRID)
