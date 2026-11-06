@@ -1,10 +1,14 @@
 {
-  "title": "Code and data for: Measurement-aware physics-informed neural networks for estimating dopamine diffusion and uptake from sparse electrode recordings",
+  "title": "Code and data for: Measurement-aware estimation of dopamine diffusion, uptake and spatial reach from sparse electrode recordings with physics-informed neural networks",
   "upload_type": "software",
-  "description": "<p>JAX implementation of measurement-aware inverse physics-informed neural networks (PINNs) for estimating the dopamine diffusion coefficient and uptake rate from sparse, noisy electrode recordings, together with a classical least-squares reference estimator, Cram&eacute;r-Rao bounds of recording designs, the frozen synthetic benchmark data and the outputs of every run reported in the accompanying manuscript (Hackman and Zhu, submitted to Biomedical Signal Processing and Control). The README maps each table and figure to the notebook or script that produces it.</p>",
+  "description": "<p>JAX implementation of measurement-aware inverse physics-informed neural networks (PINNs) for estimating the dopamine diffusion coefficient and uptake rate from sparse, noisy electrode recordings, together with a classical least-squares reference estimator, Cram&eacute;r-Rao bounds of recording designs, the frozen synthetic benchmark data and the outputs of every run reported in the accompanying manuscript (Hackman, Sakyi and Zhu, submitted to the Journal of Computational Neuroscience). The README maps each table and figure to the notebook or script that produces it.</p>",
   "creators": [
     {
       "name": "Hackman, Emmanuel",
+      "affiliation": "School of Mathematics and Natural Sciences, University of Southern Mississippi"
+    },
+    {
+      "name": "Sakyi, Michael",
       "affiliation": "School of Mathematics and Natural Sciences, University of Southern Mississippi"
     },
     {
@@ -22,5 +26,6 @@
     "measurement model",
     "JAX"
   ],
-  "access_right": "open"
+  "access_right": "open",
+  "version": "2.1.0"
 }

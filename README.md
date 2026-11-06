@@ -7,12 +7,15 @@ reference estimator and Cramér-Rao bounds for estimating dopamine diffusion and
 from sparse electrode recordings, implemented in **JAX** (Flax NNX, Optax, jaxopt).
 This repository holds the code, the synthetic data and the outputs of every run of:
 
-> Hackman, E., & Zhu, H. *Measurement-aware physics-informed neural networks for
-> estimating dopamine diffusion and uptake from sparse electrode recordings.*
-> Submitted to *Biomedical Signal Processing and Control*.
+> Hackman, E., Sakyi, M., & Zhu, H. *Measurement-aware estimation of dopamine
+> diffusion, uptake and spatial reach from sparse electrode recordings with
+> physics-informed neural networks.* Submitted to *Journal of Computational
+> Neuroscience*.
 
-Release `v2.0.0` is archived on Zenodo; its DOI is given in the manuscript's data
-statement. (DOI 10.5281/zenodo.20352595 archives an earlier version with different
+Release `v2.1.0` is archived on Zenodo; its DOI is given in the manuscript's data
+statement. Release `v2.0.0` archives the earlier BSPC submission and lacks the
+analyses added for the JCNS manuscript (lag sensitivity, 20 PINN realizations, k-shift
+diagnosis). (DOI 10.5281/zenodo.20352595 archives an earlier version with different
 parameters; do not use it to reproduce the current manuscript.)
 
 ---
@@ -27,7 +30,7 @@ parameters; do not use it to reproduce the current manuscript.)
 | `tests/` | Test suite (solver, reference estimator, PINN, benchmark integrity) |
 | `scripts/make_benchmark.py` | Regenerates `benchmark/v1/` from the seeds |
 | `dopamine_PINN.ipynb` | Original main pipeline (manuscript v1-v5 numbers; superseded by the baseline notebook) |
-| `dopamine_PINN_tuning.ipynb` | Loss-weight selection (Supplementary S2), electrode designs and the sensor (measurement-model) experiment |
+| `dopamine_PINN_tuning.ipynb` | Loss-weight selection (Online Resource 2), electrode designs, the sensor (measurement-model) experiment and the k-shift diagnosis |
 | `dopamine_PINN_extensions.ipynb` | Extension experiments: 20 realizations, truth-free weights, Michaelis-Menten, D(x, y), obstacles |
 | `dopamine_PINN_remedies.ipynb` | Adaptive weights, adaptive sampling and Fourier features on the cases where the PINN failed |
 | `results/` | **Outputs of the runs behind the manuscript** (`metrics.json`, figures, JSON of the extension experiments) |
@@ -85,24 +88,26 @@ L-BFGS, 30,000 collocation points).
 
 The GPU runs were made on Google Colab (NVIDIA A100); their outputs are in `results/`
 and `design_map/`. The analyses marked *CPU* need only NumPy and SciPy and run in about
-a minute on a laptop. Section, table and figure numbers refer to the BSPC manuscript.
+a minute on a laptop. Section, table and figure numbers refer to the JCNS manuscript; Online Resources 1-3 are its supplementary files.
 
 | Manuscript item | Produced by | Output |
 |---|---|---|
-| Forward accuracy (Section 3.1), fields (Supplementary S3) | `dopamine_PINN.ipynb` | `results/manuscript_main_run/` |
+| Forward accuracy (Section 3.1), fields (Online Resource 3) | `dopamine_PINN.ipynb` | `results/manuscript_main_run/` |
 | Exact bounded-domain solution vs FD (Section 3.1, Table A.1) | `scripts/exact_solution_check.py` (CPU) | `results/exact_solution_check.json` |
 | Table 1, upper rows (realization 4001, five network seeds) | `dopamine_PINN.ipynb` | `results/manuscript_main_run/metrics.json` |
 | Table 1, lower rows; Fig. 2 (20 realizations) | `dopamine_PINN_extensions.ipynb` (E1); figure `scripts/plot_noise_draws_fig.py` | `results/manuscript_extensions/E1_noise_draws.*` |
 | Cramér-Rao bounds, scattered and electrode designs; Fig. 3a,b | `design_map/experimental_design_map.py` (CPU) | `design_map/design_map.json` |
-| Table 2 and Fig. 3c,d: PINN and reference on realizations 4001-4005 | `dopamine_PINN_tuning.ipynb`, cell *Electrode-like observation designs* | `design_map/electrode_design.json` |
+| Table 2 and Fig. 3c,d: PINN and reference on realizations 4001-4005 (two sites: 4001-4020) | `dopamine_PINN_tuning.ipynb`, cell *Electrode-like observation designs* (`EXTEND_TO_20` for 4006-4020) | `design_map/electrode_design.json` |
 | Table 2 and Fig. 3c,d: reference over realizations 4001-4050 | `scripts/review_analyses.py` (CPU) | `results/manuscript_extensions/review_analyses.json` |
 | Starting-value and profile test of the low D (Section 3.3) | `dopamine_PINN_tuning.ipynb`, cell *Starting-value and profile test* (`RUN_START`) | `design_map/start_test.json` |
-| Tables 3 and 4, Fig. 4: sensor experiment, reference (50 realizations) and PINN (5) | `dopamine_PINN_tuning.ipynb`, cell *Realistic electrode measurement* | `results/manuscript_extensions/measurement_model.*` |
+| Tables 3 and 4, Fig. 4: sensor experiment, reference (50 realizations) and PINN (5; all effects combined: 20) | `dopamine_PINN_tuning.ipynb`, cell *Realistic electrode measurement* (`EXTEND_TO_20`, `EXTEND_NAIVE` for 5006-5020) | `results/manuscript_extensions/measurement_model.*` |
+| Diagnosis of the PINN's k shift (Section 3.4) | `dopamine_PINN_tuning.ipynb`, cell *Diagnosis of the PINN's high-k shift* (`RUN_KBIAS`) | `results/manuscript_extensions/k_bias.json` |
+| Response-lag sensitivity, ±20% τ (Section 4.4) | `scripts/tau_sensitivity.py` (CPU) | `results/manuscript_extensions/tau_sensitivity.json` |
 | Cramér-Rao bounds of the sensor scenarios (Table 3) | `scripts/review_analyses.py` (CPU) | `results/manuscript_extensions/review_analyses.json` |
 | Fig. 1 (schematic, computed from the exact solution) | `design_map/plot_schematic_fig.py` (CPU) | — |
 | Figs 3 and 4 | `design_map/plot_electrode_fig.py`, `design_map/plot_measurement_fig.py` (CPU) | — |
-| Loss-weight selection (Supplementary S2) | `dopamine_PINN_tuning.ipynb`; Step 6 `dopamine_PINN_extensions.ipynb` (E2) | `results/manuscript_extensions/E2_truthfree_wd.*` |
-| Noise sweep, posterior, parameter grid, LM baseline, observation density (Supplementary S3) | `dopamine_PINN.ipynb` | `results/manuscript_main_run/` |
+| Loss-weight selection (Online Resource 2) | `dopamine_PINN_tuning.ipynb`; Step 6 `dopamine_PINN_extensions.ipynb` (E2) | `results/manuscript_extensions/E2_truthfree_wd.*` |
+| Noise sweep, posterior, parameter grid, LM baseline, observation density (Online Resource 3) | `dopamine_PINN.ipynb` | `results/manuscript_main_run/` |
 | Graphical abstract | `scripts/make_graphical_abstract.py` (CPU) | — |
 
 Figure commands, from the repository root:
@@ -180,10 +185,11 @@ last digits; the baseline notebook measures this spread.
 
 ```bibtex
 @article{Hackman2026Dopamine,
-  author  = {Hackman, Emmanuel and Zhu, Huiqing},
-  title   = {Measurement-aware physics-informed neural networks for estimating
-             dopamine diffusion and uptake from sparse electrode recordings},
-  journal = {Biomedical Signal Processing and Control},
+  author  = {Hackman, Emmanuel and Sakyi, Michael and Zhu, Huiqing},
+  title   = {Measurement-aware estimation of dopamine diffusion, uptake and spatial
+             reach from sparse electrode recordings with physics-informed neural
+             networks},
+  journal = {Journal of Computational Neuroscience},
   year    = {2026},
   note    = {Submitted}
 }

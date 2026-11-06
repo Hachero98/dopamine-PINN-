@@ -4,7 +4,7 @@ effects, naive vs measurement-aware fits.
 a  site r = 0.5 um: true point concentration, noise-free sensor output and one
    measured record, all effects combined (M5)
 b  D: median signed error of the reference estimator, naive and aware, per
-   scenario; PINN aware fits as diamonds when present
+   scenario; PINN medians as diamonds (aware) and down-triangles (naive)
 c  same for k
 d  coverage of the reference 95% intervals with exact binomial 95% CIs
 
@@ -82,16 +82,19 @@ with plt.rc_context(RC):
         ax.plot(xi + 0.12, av, 'o', color=C_AWARE, label='reference, measurement-aware fit')
         has_p = False
         for i, n in enumerate(names):
-            for mode, dx, col in (('aware', 0.12, C_AWARE), ('naive', -0.12, C_NAIVE)):
+            for mode, dx, col, mk in (('aware', 0.12, C_AWARE, 'd'), ('naive', -0.12, C_NAIVE, 'v')):
                 pv = pinn_med(n, mode, key)
                 if pv is not None:
-                    ax.plot(xi[i] + dx + 0.12, pv, 'd', mfc='white', mec=col, mew=1.0, ms=4.5,
+                    ax.plot(xi[i] + dx + 0.12, pv, mk, mfc='white', mec=col, mew=1.0, ms=4.5,
                             label=None)
                     has_p = True
         if has_p:
             r5 = [ref5_med(n, key) for n in names]
             ax.plot(xi + 0.38, r5, 'x', color=C_AWARE, mew=1.0, ms=4.5, zorder=4)
-            ax.plot([], [], 'd', mfc='white', mec='0.3', mew=1.0, ms=4.5, label='PINN (5; all combined: 20)')
+            ax.plot([], [], 'd', mfc='white', mec=C_AWARE, mew=1.0, ms=4.5,
+                    label='PINN, aware (5; all combined: 20)')
+            ax.plot([], [], 'v', mfc='white', mec=C_NAIVE, mew=1.0, ms=4.5,
+                    label='PINN, naive (all combined: 20)')
             ax.plot([], [], 'x', color=C_AWARE, mew=1.0, ms=4.5, label='reference, aware, same records')
         ax.set_yscale('symlog', linthresh=5.0, linscale=1.0)
         ticks = [-100, -50, -20, -10, -5, 0, 5, 10, 20, 50, 100, 200]
@@ -108,7 +111,7 @@ with plt.rc_context(RC):
         ax.set_ylabel(f'median error of {sym} (%)')
         ax.grid(axis='y', **GRID)
         if key == 'k':
-            fig.legend(*ax.get_legend_handles_labels(), loc='lower center', ncol=4,
+            fig.legend(*ax.get_legend_handles_labels(), loc='lower center', ncol=3,
                        frameon=False, bbox_to_anchor=(0.5, 0.0))
         ax.set_title(tag, loc='left', fontweight='bold')
 
